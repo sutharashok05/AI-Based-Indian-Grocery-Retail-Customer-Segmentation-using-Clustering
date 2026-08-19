@@ -22,13 +22,15 @@ st.set_page_config(
 # ============================================================
 # API CONFIG
 # ============================================================
+
 import os
-API_URL = os.getenv(
-    "BACKEND_URL",
-    "http://127.0.0.1:8000"
-).rstrip("/")
+# API_URL = st.secrets["BACKEND_URL"].rstrip("/")
+import streamlit as st
 
-
+if "BACKEND_URL" in st.secrets:
+    API_URL = st.secrets["BACKEND_URL"].rstrip("/")
+else:
+    API_URL = "http://127.0.0.1:8000"
 # ============================================================
 # CUSTOM CSS
 # ============================================================
